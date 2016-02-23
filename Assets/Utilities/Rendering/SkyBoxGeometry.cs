@@ -17,8 +17,6 @@ public class SkyBoxGeometry : MonoBehaviour {
 	[SerializeField]
     Vector3 offsetToCamera = new Vector3();
     [SerializeField]
-    bool _keepUpwardsFacing = false;
-    [SerializeField]
     bool _executeInEditor = true;
     [SerializeField]
     CameraMode _cameraMode = CameraMode.Main;
