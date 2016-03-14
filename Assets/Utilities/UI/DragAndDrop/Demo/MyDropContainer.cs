@@ -4,22 +4,22 @@ using System;
 
 public class MyDropContainer : DropContainer {
 
-    public override void OnDrop(DragAndDropable dragAndDropable)
+    public override void OnDrop(Draggable.DragInfo dragData, Draggable.DropInfo dropData)
     {
-        Debug.Log(dragAndDropable.name + " was droppen in me");
+        Debug.Log(dropData.Draggable.name + " was droppen in me");
     }
 
-    public override void OnEnterHover(DragAndDropable dragAndDropable)
+    public override void OnStartHover(Draggable.DragInfo dragData, Draggable.DropInfo dropData)
     {
-        Debug.Log(dragAndDropable.name + " started hovering me");
+        Debug.Log(dropData.Draggable.name + " started hovering me");
     }
 
-    public override void OnExitHover(DragAndDropable dragAndDropable)
+    public override void OnStopHover(Draggable.DragInfo dragData, Draggable.DropInfo dropData)
     {
-        Debug.Log(dragAndDropable.name + " stopped hovering me");
+        Debug.Log(dropData.Draggable.name + " stopped hovering me");
     }
 
-    public override void OnHover(DragAndDropable dragAndDropable)
+    public override void OnHover(Draggable.DragInfo dragData, Draggable.DropInfo dropData)
     {
 
     }

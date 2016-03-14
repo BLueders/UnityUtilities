@@ -4,10 +4,9 @@ using System;
 
 public abstract class DropContainer : MonoBehaviour
 {
-    public abstract void OnEnterHover(DragAndDropable dragAndDropable);
-    public abstract void OnHover(DragAndDropable dragAndDropable);
-    public abstract void OnExitHover(DragAndDropable dragAndDropable);
-
-    public abstract void OnDrop(DragAndDropable dragAndDropable);
+    public abstract void OnStartHover(Draggable.DragInfo dragData, Draggable.DropInfo dropData);
+    public abstract void OnHover(Draggable.DragInfo dragData, Draggable.DropInfo dropData);
+    public abstract void OnStopHover(Draggable.DragInfo dragData, Draggable.DropInfo dropData);
+    public abstract void OnDrop(Draggable.DragInfo dragData, Draggable.DropInfo dropData);
 
 }

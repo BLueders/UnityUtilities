@@ -2,28 +2,15 @@
 using System.Collections;
 using System;
 
-public class MyDragAndDropable : DragAndDropable {
+public class MyDragAndDropable : Draggable {
 
-    protected override bool Use2DPhysics
+    protected override void HandleBeginDrag(DragInfo data){}
+    protected override void HandleDrag(DragInfo data){}
+    protected override void HandleEndDrag(DragInfo data){}
+
+    protected override void OnDrop(Draggable.DragInfo dragData, Draggable.DropInfo dropData)
     {
-        get
-        {
-            return false;
-        }
-    }
-
-    protected override void OnDrop(DropContainer container)
-    {
-        Debug.Log("I was dropped into " + container.name);
-    }
-
-    protected override void Awake() {
-        base.Awake();
-	}
-
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
+        Debug.Log("I was dropped into " + dropData.Container.name);
     }
 
     // Update is called once per frame
@@ -31,20 +18,23 @@ public class MyDragAndDropable : DragAndDropable {
 	
 	}
 
-    protected override void OnStartHovering(DropContainer container)
+    protected override void OnStartHovering(Draggable.DragInfo dragData, Draggable.DropInfo dropData)
     {
-        Debug.Log("I started hovering " + container.name);
+        Debug.Log("I started hovering " + dropData.Container.name);
 
     }
 
-    protected override void OnHovering(DropContainer container)
+    protected override void OnHovering(Draggable.DragInfo dragData, Draggable.DropInfo dropData)
     {
 
     }
 
-    protected override void OnEndHovering(DropContainer container)
+    protected override void OnStopHovering(Draggable.DragInfo dragData, Draggable.DropInfo dropData)
     {
-        Debug.Log("I stopped hovering " + container.name);
+        Debug.Log("I stopped hovering " + dropData.Container.name);
 
     }
+
+
+
 }
