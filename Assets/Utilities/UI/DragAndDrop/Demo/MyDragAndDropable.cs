@@ -11,6 +11,7 @@ public class MyDragAndDropable : Draggable {
     protected override void OnDrop(Draggable.DragInfo dragData, Draggable.DropInfo dropData)
     {
         Debug.Log("I was dropped into " + dropData.Container.name);
+        transform.position = Vector3.zero;
     }
 
     // Update is called once per frame
