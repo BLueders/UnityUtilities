@@ -28,13 +28,14 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     #region Droppable fields
     [SerializeField]
-    private bool _isDroppable = true;
-    [SerializeField]
-    private float _collisionDistance = 5;
-    [SerializeField]
-    private LayerMask _dropContainerLayers = 1; // default layer
-    [SerializeField]
-    DroppablePhysics _overlapPhysics = DroppablePhysics.ScreenRay3D;
+    private DroppableConfig _droppableConfig = new DroppableConfig();
+    public bool IsDroppable
+    {
+        get
+        {
+            return _droppableConfig.isDroppable;
+        }
+    }
 
     private delegate DropContainer GetHoveredContainer(PointerEventData data, Draggable draggable);
 
@@ -100,7 +101,7 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
             _dragInfo.DragPath.AddLast(transform.position);
         }
         HandleDrag(_dragInfo);
-        if (_isDroppable)
+        if (_droppableConfig.isDroppable)
         {
             UpdateDroppableHover(eventData);
         }
@@ -127,7 +128,7 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
         _dragInfo.DragEndPos = transform.position;
         _dragInfo.DragEndTime = Time.time;
         HandleEndDrag(_dragInfo);
-        if (_isDroppable && _currentHoveredContainer != null)
+        if (_droppableConfig.isDroppable && _currentHoveredContainer != null)
         {
             DropIntoContainer(_currentHoveredContainer);
             _currentHoveredContainer = null;
@@ -144,7 +145,7 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
     private void UpdateDroppableHover(PointerEventData eventData)
     {
         DropContainer oldHover = _currentHoveredContainer;
-        _currentHoveredContainer = PhysicsModule.GetHoveredContainer(_overlapPhysics, eventData, this);
+        _currentHoveredContainer = PhysicsModule.GetHoveredContainer(_droppableConfig.overlapPhysics, eventData, this);
         if (_currentHoveredContainer != null)
         {
             _hovering = true;
@@ -192,7 +193,7 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
     #endregion
 
     #region SubClasses
-    protected enum DroppablePhysics
+    internal enum DroppablePhysics
     {
         Overlap2D, Overlap3D, Point2D, ScreenRay3D
     }
@@ -239,6 +240,24 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
     }
     #endregion
 
+    [Serializable]
+    public class DroppableConfig
+    {
+        internal DroppableConfig() { }
+
+        [SerializeField]
+        internal bool isDroppable = true;
+
+        [SerializeField]
+        internal float collisionDistance = 5;
+
+        [SerializeField]
+        internal LayerMask dropContainerLayers = 1; // default layer
+
+        [SerializeField]
+        internal DroppablePhysics overlapPhysics = DroppablePhysics.ScreenRay3D;
+    }
+
     #region PhysicChecks
     private static class PhysicsModule
     {
@@ -265,10 +284,10 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         private static DropContainer GetHoveredContainerPosition2D(PointerEventData data, Draggable draggable)
         {
-            int numHits = Physics2D.OverlapPointNonAlloc(draggable.transform.position, hits2D, draggable._dropContainerLayers);
+            int numHits = Physics2D.OverlapPointNonAlloc(draggable.transform.position, hits2D, draggable._droppableConfig.dropContainerLayers);
 #if UNITY_EDITOR
-            Debug.DrawLine(draggable.transform.position + new Vector3(draggable._collisionDistance, 0, 0), draggable.transform.position - new Vector3(draggable._collisionDistance, 0, 0), Color.blue);
-            Debug.DrawLine(draggable.transform.position + new Vector3(0, draggable._collisionDistance, 0), draggable.transform.position - new Vector3(0, draggable._collisionDistance, 0), Color.blue);
+            Debug.DrawLine(draggable.transform.position + new Vector3(draggable._droppableConfig.collisionDistance, 0, 0), draggable.transform.position - new Vector3(draggable._droppableConfig.collisionDistance, 0, 0), Color.blue);
+            Debug.DrawLine(draggable.transform.position + new Vector3(0, draggable._droppableConfig.collisionDistance, 0), draggable.transform.position - new Vector3(0, draggable._droppableConfig.collisionDistance, 0), Color.blue);
 #endif
             DropContainer nowHoveredContainer = null;
             float closestDist;
@@ -291,9 +310,9 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
         private static DropContainer GetHoveredContainerScreenRay3D(PointerEventData data, Draggable draggable)
         {
             Ray ray = data.pressEventCamera.ScreenPointToRay(data.pressEventCamera.WorldToScreenPoint(draggable.transform.position));
-            int numHits = Physics.RaycastNonAlloc(ray, RaycastHits, draggable._collisionDistance, draggable._dropContainerLayers);
+            int numHits = Physics.RaycastNonAlloc(ray, RaycastHits, draggable._droppableConfig.collisionDistance, draggable._droppableConfig.dropContainerLayers);
 #if UNITY_EDITOR
-            Debug.DrawLine(ray.GetPoint(0), ray.GetPoint(draggable._collisionDistance), Color.blue);
+            Debug.DrawLine(ray.GetPoint(0), ray.GetPoint(draggable._droppableConfig.collisionDistance), Color.blue);
 #endif
             DropContainer nowHoveredContainer = null;
             float closestDist;
@@ -315,9 +334,9 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         private static DropContainer GetHoveredContainerOverlap2D(PointerEventData data, Draggable draggable)
         {
-            int numHits = Physics2D.OverlapCircleNonAlloc(draggable.transform.position, draggable._collisionDistance, hits2D, draggable._dropContainerLayers);
+            int numHits = Physics2D.OverlapCircleNonAlloc(draggable.transform.position, draggable._droppableConfig.collisionDistance, hits2D, draggable._droppableConfig.dropContainerLayers);
 #if UNITY_EDITOR
-            DebugGizmos.DrawWireSphere(draggable.transform.position, draggable._collisionDistance, Color.blue);
+            DebugGizmos.DrawWireSphere(draggable.transform.position, draggable._droppableConfig.collisionDistance, Color.blue);
 #endif
             DropContainer nowHoveredContainer = null;
             float closestDist;
@@ -339,9 +358,9 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         private static DropContainer GetHoveredContainerOverlap3D(PointerEventData data, Draggable draggable)
         {
-            int numHits = Physics.OverlapSphereNonAlloc(draggable.transform.position, draggable._collisionDistance, hits3D, draggable._dropContainerLayers);
+            int numHits = Physics.OverlapSphereNonAlloc(draggable.transform.position, draggable._droppableConfig.collisionDistance, hits3D, draggable._droppableConfig.dropContainerLayers);
 #if UNITY_EDITOR
-            DebugGizmos.DrawWireSphere(draggable.transform.position, draggable._collisionDistance, Color.blue);
+            DebugGizmos.DrawWireSphere(draggable.transform.position, draggable._droppableConfig.collisionDistance, Color.blue);
 #endif
             DropContainer nowHoveredContainer = null;
             float closestDist;
