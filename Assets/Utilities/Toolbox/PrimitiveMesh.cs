@@ -113,7 +113,7 @@ namespace Toolbox
                     mesh.triangles = triangles;
 
                     mesh.RecalculateBounds();
-                    mesh.Optimize();
+                    ;
 
                     _sphere = mesh;
                 }
@@ -379,7 +379,7 @@ namespace Toolbox
                     mesh.triangles = triangles;
 
                     mesh.RecalculateBounds();
-                    mesh.Optimize();
+                    ;
                     _tube = mesh;
                 }
                 return _tube;
@@ -577,7 +577,7 @@ namespace Toolbox
                     mesh.triangles = triangles;
 
                     mesh.RecalculateBounds();
-                    mesh.Optimize();
+                    ;
 
                     _cone = mesh;
                 }
@@ -726,7 +726,7 @@ namespace Toolbox
                     mesh.triangles = triangles;
 
                     mesh.RecalculateBounds();
-                    mesh.Optimize();
+                    ;
 
                     _cube = mesh;
                 }
@@ -807,7 +807,7 @@ namespace Toolbox
                     mesh.triangles = triangles;
 
                     mesh.RecalculateBounds();
-                    mesh.Optimize();
+                    ;
 
                     _PlaneMeshXZ = mesh;
                 }
@@ -888,7 +888,7 @@ namespace Toolbox
                     mesh.triangles = triangles;
 
                     mesh.RecalculateBounds();
-                    mesh.Optimize();
+                    ;
 
                     _PlaneMeshXY = mesh;
                 }
