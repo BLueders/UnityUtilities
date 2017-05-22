@@ -3,51 +3,87 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System;
 
+/// <summary>
+/// Draggable. Base class for Draggable behavior on objects in the scene. It uses the messages from the Unity UI system. To work
+/// you need a EventSystem in the scene and a GraphicsRaycaster on the camera. The object with the Draggable component on it has
+/// to have a collider on it. Depending on the Physics you need a 2D collidr and 2D raycaster or 3D respectively.
+/// Extend this class and override the functions HandleBeginDrag, HandleDrag and HandleEndDrag, OnStartHovering, OnHovering, OnStopHovering and
+/// OnDrop. They get called when the respective events happen.
+/// </summary>
 public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private const float PATH_NODE_DISTANCE = 10;
     private const float DRAG_FORCE_FACTOR = 200;
 
-
-    public bool IsDragged { get; private set; }
-
-    private DragInfo _dragInfo;
-    private DropInfo _dropInfo;
-
-    #region Draggable fields
-    private float _lastOnDragCallTime;
-    private Vector3 _lastFramePos;
-    private float _dragDistanceToScreen;
-    #endregion
-
     #region Draggable abstract functions
+	/// <summary>
+	/// Gets called when the user starts to drag the object.
+	/// </summary>
+	/// <param name="dragData">Contains information about the ongoing drag.</param>
     protected abstract void HandleBeginDrag(DragInfo dragData);
+	/// <summary>
+	/// Gets called continously when the user drags the object.
+	/// </summary>
+	/// <param name="dragData">Contains information about the ongoing drag.</param>
     protected abstract void HandleDrag(DragInfo dragData);
+	/// <summary>
+	/// Gets called when the user stops to drag the object
+	/// </summary>
+	/// <param name="dragData">Contains information about the ongoing drag.</param>
     protected abstract void HandleEndDrag(DragInfo dragData);
     #endregion
 
+	#region Droppable abstract functions
+	/// <summary>
+	/// Gets called when the user stops to drag the object and drops it into a dropcontainer
+	/// </summary>
+	/// <param name="dragData">Contains information about the ongoing drag.</param>
+	/// <param name="dropData">Contains information about the drop event </param>
+	protected abstract void OnDrop(DragInfo dragData, DropInfo dropData);
+	/// <summary>
+	/// Gets called when the user starts to hover (drag) the Draggable over a drop container
+	/// </summary>
+	/// <param name="dragData">Contains information about the ongoing drag.</param>
+	/// <param name="dropData">Contains information about the hovered container</param>
+	protected abstract void OnStartHovering(DragInfo dragData, DropInfo dropData);
+	/// <summary>
+	/// Gets called continuesly while the user is hovering (dragging) the Draggable over a drop container
+	/// </summary>
+	/// <param name="dragData">Contains information about the ongoing drag.</param>
+	/// <param name="dropData">Contains information about the hovered container</param>
+	protected abstract void OnHovering(DragInfo dragData, DropInfo dropData);
+	/// <summary>
+	/// Gets called when the user stops hovering (dragging) the Draggable over a drop container. 
+	/// </summary>
+	/// <param name="dragData">Contains information about the ongoing drag.</param>
+	/// <param name="dropData">Contains information about the hovered container</param>
+	protected abstract void OnStopHovering(DragInfo dragData, DropInfo dropData);
+	#endregion
+
+	#region Draggable fields
+	public bool IsDragged { get; private set; }
+	private float _lastOnDragCallTime;
+	private Vector3 _lastFramePos;
+	private float _dragDistanceToScreen;
+	#endregion
+
     #region Droppable fields
     [SerializeField]
-    private bool _isDroppable = true;
-    [SerializeField]
-    private float _collisionDistance = 5;
-    [SerializeField]
-    private LayerMask _dropContainerLayers = 1; // default layer
-    [SerializeField]
-    DroppablePhysics _overlapPhysics = DroppablePhysics.ScreenRay3D;
+    private DroppableConfig _droppableConfig = new DroppableConfig();
+    public bool IsDroppable
+    {
+        get
+        {
+            return _droppableConfig.isDroppable;
+        }
+    }
 
-    private delegate DropContainer GetHoveredContainer(PointerEventData data, Draggable draggable);
-
-    private bool _hovering = false;
     private DropContainer _currentHoveredContainer = null;
     #endregion
 
-    #region Droppable abstract functions
-    protected abstract void OnDrop(DragInfo dragData, DropInfo dropData);
-    protected abstract void OnStartHovering(DragInfo dragData, DropInfo dropData);
-    protected abstract void OnHovering(DragInfo dragData, DropInfo dropData);
-    protected abstract void OnStopHovering(DragInfo dragData, DropInfo dropData);
-    #endregion
+	private DragInfo _dragInfo;
+	private DropInfo _dropInfo;
+	private delegate DropContainer GetHoveredContainer(PointerEventData data, Draggable draggable);
 
     private void InitializeDrag(PointerEventData eventData)
     {
@@ -100,7 +136,7 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
             _dragInfo.DragPath.AddLast(transform.position);
         }
         HandleDrag(_dragInfo);
-        if (_isDroppable)
+        if (_droppableConfig.isDroppable)
         {
             UpdateDroppableHover(eventData);
         }
@@ -127,7 +163,7 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
         _dragInfo.DragEndPos = transform.position;
         _dragInfo.DragEndTime = Time.time;
         HandleEndDrag(_dragInfo);
-        if (_isDroppable && _currentHoveredContainer != null)
+        if (_droppableConfig.isDroppable && _currentHoveredContainer != null)
         {
             DropIntoContainer(_currentHoveredContainer);
             _currentHoveredContainer = null;
@@ -144,14 +180,10 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
     private void UpdateDroppableHover(PointerEventData eventData)
     {
         DropContainer oldHover = _currentHoveredContainer;
-        _currentHoveredContainer = PhysicsModule.GetHoveredContainer(_overlapPhysics, eventData, this);
+        _currentHoveredContainer = PhysicsModule.GetHoveredContainer(_droppableConfig.overlapPhysics, eventData, this);
         if (_currentHoveredContainer != null)
         {
-            _hovering = true;
             _dropInfo.Container = _currentHoveredContainer;
-        }
-        else {
-            _hovering = false;
         }
         SendHoverMessages(oldHover);
     }
@@ -162,7 +194,6 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
         container.OnStopHover(_dragInfo, _dropInfo);
         OnDrop(_dragInfo, _dropInfo);
         container.OnDrop(_dragInfo, _dropInfo);
-        _hovering = false;
     }
 
     private void SendHoverMessages(DropContainer oldHover)
@@ -186,13 +217,12 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
         {
             OnHovering(_dragInfo, _dropInfo);
             _currentHoveredContainer.OnHover(_dragInfo, _dropInfo);
-            _hovering = true;
         }
     }
     #endregion
 
     #region SubClasses
-    protected enum DroppablePhysics
+    internal enum DroppablePhysics
     {
         Overlap2D, Overlap3D, Point2D, ScreenRay3D
     }
@@ -239,6 +269,24 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
     }
     #endregion
 
+    [Serializable]
+    public class DroppableConfig
+    {
+        internal DroppableConfig() { }
+
+        [SerializeField]
+        internal bool isDroppable = true;
+
+        [SerializeField]
+        internal float collisionDistance = 5;
+
+        [SerializeField]
+        internal LayerMask dropContainerLayers = 1; // default layer
+
+        [SerializeField]
+        internal DroppablePhysics overlapPhysics = DroppablePhysics.ScreenRay3D;
+    }
+
     #region PhysicChecks
     private static class PhysicsModule
     {
@@ -265,10 +313,10 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         private static DropContainer GetHoveredContainerPosition2D(PointerEventData data, Draggable draggable)
         {
-            int numHits = Physics2D.OverlapPointNonAlloc(draggable.transform.position, hits2D, draggable._dropContainerLayers);
+            int numHits = Physics2D.OverlapPointNonAlloc(draggable.transform.position, hits2D, draggable._droppableConfig.dropContainerLayers);
 #if UNITY_EDITOR
-            Debug.DrawLine(draggable.transform.position + new Vector3(draggable._collisionDistance, 0, 0), draggable.transform.position - new Vector3(draggable._collisionDistance, 0, 0), Color.blue);
-            Debug.DrawLine(draggable.transform.position + new Vector3(0, draggable._collisionDistance, 0), draggable.transform.position - new Vector3(0, draggable._collisionDistance, 0), Color.blue);
+            Debug.DrawLine(draggable.transform.position + new Vector3(draggable._droppableConfig.collisionDistance, 0, 0), draggable.transform.position - new Vector3(draggable._droppableConfig.collisionDistance, 0, 0), Color.blue);
+            Debug.DrawLine(draggable.transform.position + new Vector3(0, draggable._droppableConfig.collisionDistance, 0), draggable.transform.position - new Vector3(0, draggable._droppableConfig.collisionDistance, 0), Color.blue);
 #endif
             DropContainer nowHoveredContainer = null;
             float closestDist;
@@ -291,9 +339,9 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
         private static DropContainer GetHoveredContainerScreenRay3D(PointerEventData data, Draggable draggable)
         {
             Ray ray = data.pressEventCamera.ScreenPointToRay(data.pressEventCamera.WorldToScreenPoint(draggable.transform.position));
-            int numHits = Physics.RaycastNonAlloc(ray, RaycastHits, draggable._collisionDistance, draggable._dropContainerLayers);
+            int numHits = Physics.RaycastNonAlloc(ray, RaycastHits, draggable._droppableConfig.collisionDistance, draggable._droppableConfig.dropContainerLayers);
 #if UNITY_EDITOR
-            Debug.DrawLine(ray.GetPoint(0), ray.GetPoint(draggable._collisionDistance), Color.blue);
+            Debug.DrawLine(ray.GetPoint(0), ray.GetPoint(draggable._droppableConfig.collisionDistance), Color.blue);
 #endif
             DropContainer nowHoveredContainer = null;
             float closestDist;
@@ -315,9 +363,9 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         private static DropContainer GetHoveredContainerOverlap2D(PointerEventData data, Draggable draggable)
         {
-            int numHits = Physics2D.OverlapCircleNonAlloc(draggable.transform.position, draggable._collisionDistance, hits2D, draggable._dropContainerLayers);
+            int numHits = Physics2D.OverlapCircleNonAlloc(draggable.transform.position, draggable._droppableConfig.collisionDistance, hits2D, draggable._droppableConfig.dropContainerLayers);
 #if UNITY_EDITOR
-            DebugGizmos.DrawWireSphere(draggable.transform.position, draggable._collisionDistance, Color.blue);
+            DebugGizmos.DrawWireSphere(draggable.transform.position, draggable._droppableConfig.collisionDistance, Color.blue);
 #endif
             DropContainer nowHoveredContainer = null;
             float closestDist;
@@ -339,9 +387,9 @@ public abstract class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         private static DropContainer GetHoveredContainerOverlap3D(PointerEventData data, Draggable draggable)
         {
-            int numHits = Physics.OverlapSphereNonAlloc(draggable.transform.position, draggable._collisionDistance, hits3D, draggable._dropContainerLayers);
+            int numHits = Physics.OverlapSphereNonAlloc(draggable.transform.position, draggable._droppableConfig.collisionDistance, hits3D, draggable._droppableConfig.dropContainerLayers);
 #if UNITY_EDITOR
-            DebugGizmos.DrawWireSphere(draggable.transform.position, draggable._collisionDistance, Color.blue);
+            DebugGizmos.DrawWireSphere(draggable.transform.position, draggable._droppableConfig.collisionDistance, Color.blue);
 #endif
             DropContainer nowHoveredContainer = null;
             float closestDist;

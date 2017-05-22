@@ -4,6 +4,8 @@ using System;
 
 public class MyDragAndDropable : Draggable {
 
+    public int SomeExamplePropterty;
+
     protected override void HandleBeginDrag(DragInfo data){}
     protected override void HandleDrag(DragInfo data){}
     protected override void HandleEndDrag(DragInfo data){}

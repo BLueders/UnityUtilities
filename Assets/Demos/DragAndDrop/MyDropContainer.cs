@@ -3,6 +3,12 @@ using System.Collections;
 
 public class MyDropContainer : DropContainer {
 
+	private Vector3 originalScale;
+
+	void Start(){
+		originalScale = transform.localScale;
+	}
+
     public override void OnDrop(Draggable.DragInfo dragData, Draggable.DropInfo dropData)
     {
         Vector3 randomColor = Random.onUnitSphere;
@@ -12,18 +18,18 @@ public class MyDropContainer : DropContainer {
 
     public override void OnStartHover(Draggable.DragInfo dragData, Draggable.DropInfo dropData)
     {
-        transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
+		transform.localScale = originalScale * 1.2f;
         Debug.Log(dropData.Draggable.name + " started hovering me");
     }
 
     public override void OnStopHover(Draggable.DragInfo dragData, Draggable.DropInfo dropData)
     {
-        transform.localScale = new Vector3(3f, 3f, 3f);
+		transform.localScale = originalScale;
         Debug.Log(dropData.Draggable.name + " stopped hovering me");
     }
 
     public override void OnHover(Draggable.DragInfo dragData, Draggable.DropInfo dropData)
     {
-        transform.localScale = new Vector3(3.5f, 3.5f, 3.5f) + Random.onUnitSphere * 0.1f;
+		transform.localScale = originalScale * (1.2f + Random.Range (-0.1f, 0.1f));
     }
 }

@@ -1,0 +1,290 @@
+fileFormatVersion: 2
+guid: 2681ebfd05f893c42b54e17647ba05b5
+timeCreated: 1461848695
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: CharacterSprite_Down1
+    21300002: CharacterSprite_Down2
+    21300004: CharacterSprite_Down3
+    21300006: CharacterSprite_Left1
+    21300008: CharacterSprite_Left2
+    21300010: CharacterSprite_Left3
+    21300012: CharacterSprite_Right1
+    21300014: CharacterSprite_Right2
+    21300016: CharacterSprite_Right3
+    21300018: CharacterSprite_Up1
+    21300020: CharacterSprite_Up2
+    21300022: CharacterSprite_Up3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: CharacterSprite_Down1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 99
+        width: 32.333332
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13.5, y: 16.5}
+        - {x: -14.5, y: 15.5}
+        - {x: -14.5, y: -10.5}
+        - {x: -12.5, y: -15.5}
+        - {x: -11.5, y: -16.5}
+        - {x: 6.5, y: -16.5}
+        - {x: 14.5, y: -13.5}
+        - {x: 14.5, y: 12.5}
+        - {x: 9.5, y: 16.5}
+    - name: CharacterSprite_Down2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 99
+        width: 32.33333
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15.5, y: 16.5}
+        - {x: -15.5, y: -11.5}
+        - {x: -9.5, y: -16.5}
+        - {x: 7.5, y: -16.5}
+        - {x: 15.5, y: -8.5}
+        - {x: 15.5, y: 1.5}
+        - {x: 14.5, y: 16.5}
+    - name: CharacterSprite_Down3
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 99
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 16.5}
+        - {x: -15, y: 13.5}
+        - {x: -15, y: -13.5}
+        - {x: -8, y: -16.5}
+        - {x: 14, y: -16.5}
+        - {x: 14, y: 13.5}
+        - {x: 10, y: 16.5}
+    - name: CharacterSprite_Left1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 66
+        width: 32.333332
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15.5, y: 16.5}
+        - {x: -15.5, y: 3.5}
+        - {x: -10.5, y: -16.5}
+        - {x: 11.5, y: -16.5}
+        - {x: 13.5, y: -14.5}
+        - {x: 13.5, y: 8.5}
+        - {x: 10.5, y: 16.5}
+    - name: CharacterSprite_Left2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 66
+        width: 32.33333
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13.5, y: 3.5}
+        - {x: 11.5, y: 13.5}
+        - {x: 8.5, y: 16.5}
+        - {x: -15.5, y: 16.5}
+        - {x: -15.5, y: 4.5}
+        - {x: -11.5, y: -9.5}
+        - {x: -5.5, y: -16.5}
+        - {x: 4.5, y: -16.5}
+        - {x: 12.5, y: -9.5}
+        - {x: 13.5, y: -8.5}
+    - name: CharacterSprite_Left3
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 66
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 16.5}
+        - {x: -14, y: 5.5}
+        - {x: -8, y: -16.5}
+        - {x: 12, y: -16.5}
+        - {x: 14, y: -11.5}
+        - {x: 14, y: 14.5}
+        - {x: 12, y: 16.5}
+    - name: CharacterSprite_Right1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 33
+        width: 32.333332
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11.5, y: 16.5}
+        - {x: -13.5, y: 12.5}
+        - {x: -14.5, y: 8.5}
+        - {x: -14.5, y: -7.5}
+        - {x: -10.5, y: -16.5}
+        - {x: 6.5, y: -16.5}
+        - {x: 12.5, y: -0.5}
+        - {x: 12.5, y: 16.5}
+    - name: CharacterSprite_Right2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 33
+        width: 32.33333
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14.5, y: -11.5}
+        - {x: -11.5, y: -16.5}
+        - {x: 11.5, y: -16.5}
+        - {x: 12.5, y: -15.5}
+        - {x: 12.5, y: 16.5}
+        - {x: -12.5, y: 16.5}
+        - {x: -14.5, y: 12.5}
+    - name: CharacterSprite_Right3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 33
+        width: 32.33333
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.5, y: 16.5}
+        - {x: -13.5, y: 13.5}
+        - {x: -13.5, y: -11.5}
+        - {x: -11.5, y: -16.5}
+        - {x: 8.5, y: -16.5}
+        - {x: 12.5, y: -8.5}
+        - {x: 12.5, y: 16.5}
+    - name: CharacterSprite_Up1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32.333332
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.5, y: 16.5}
+        - {x: -12.5, y: -13.5}
+        - {x: -7.5, y: -16.5}
+        - {x: 12.5, y: -16.5}
+        - {x: 14.5, y: -6.5}
+        - {x: 14.5, y: 14.5}
+        - {x: 12.5, y: 16.5}
+    - name: CharacterSprite_Up2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32.33333
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13.5, y: 16.5}
+        - {x: -13.5, y: -9.5}
+        - {x: -7.5, y: -16.5}
+        - {x: 12.5, y: -16.5}
+        - {x: 14.5, y: -10.5}
+        - {x: 14.5, y: 16.5}
+    - name: CharacterSprite_Up3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32.33333
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.5, y: 16.5}
+        - {x: -12.5, y: 13.5}
+        - {x: -12.5, y: -14.5}
+        - {x: -6.5, y: -16.5}
+        - {x: 12.5, y: -16.5}
+        - {x: 14.5, y: -15.5}
+        - {x: 14.5, y: 16.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
