@@ -13,7 +13,6 @@ public class PerspMultiFollowCamera : MonoBehaviour
 	public float movementSmoothing = 8;
 
 	Camera cam;
-	float distance;
 
 	void Start ()
 	{
