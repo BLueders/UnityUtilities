@@ -7,13 +7,13 @@ using UnityEditor;
 /// <summary>
 /// An Attribute that will show properties in the Unity inspector but does not allow manipulating them. Works with all primitive types, vector2,3,4 and enums
 /// </summary>
-public class ShowOnlyAttribute : PropertyAttribute
+public class ReadOnlyAttribute : PropertyAttribute
 {
 
 }
 #if UNITY_EDITOR
-[CustomPropertyDrawer(typeof(ShowOnlyAttribute))]
-public class ShowOnlyDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
+public class ReadOnlyDrawer : PropertyDrawer
 {
 	public override void OnGUI(Rect position, SerializedProperty prop, GUIContent label)
 	{
