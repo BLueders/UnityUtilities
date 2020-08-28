@@ -19,6 +19,11 @@ public class DebugGizmos : Singleton<DebugGizmos> {
     }
 
 
+    public static void DrawFrustum(Vector3 center, float fov, float maxRange, float minRange, float aspect, Color color)
+    {
+        Instance.gizmos.Add(new FrustumGizmo(center, fov, maxRange, minRange, aspect, color));
+    }
+
     public static void DrawMesh(Mesh mesh, int subMeshIndex, Vector3 position, Quaternion rotation, Vector3 scale, Color color)
     {
         Instance.gizmos.Add(new MeshGizmo(mesh, subMeshIndex, position, rotation, scale, color));
@@ -183,6 +188,31 @@ public class DebugGizmos : Singleton<DebugGizmos> {
         {
             Gizmos.color = _color;
             Gizmos.DrawWireSphere(_position, _radius);
+        }
+    }
+
+    private class FrustumGizmo : DebugGizmo
+    {
+        private Vector3 _center;
+        private float _fov;
+        private float _maxRange;
+        private float _minRange;
+        private float _aspect;
+
+        internal FrustumGizmo(Vector3 center, float fov, float maxRange, float minRange, float aspect, Color color) : base(color)
+        {
+            _center = center;
+            _fov = fov;
+            _maxRange = maxRange;
+            _minRange = minRange;
+            _aspect = aspect;
+            _color = color;
+        }
+
+        internal override void Draw()
+        {
+            Gizmos.color = _color;
+            Gizmos.DrawFrustum(_center, _fov, _maxRange, _minRange, _aspect);
         }
     }
 }
