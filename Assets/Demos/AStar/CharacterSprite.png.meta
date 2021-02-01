@@ -1,29 +1,54 @@
 fileFormatVersion: 2
 guid: 2681ebfd05f893c42b54e17647ba05b5
-timeCreated: 1461848695
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: CharacterSprite_Down1
-    21300002: CharacterSprite_Down2
-    21300004: CharacterSprite_Down3
-    21300006: CharacterSprite_Left1
-    21300008: CharacterSprite_Left2
-    21300010: CharacterSprite_Left3
-    21300012: CharacterSprite_Right1
-    21300014: CharacterSprite_Right2
-    21300016: CharacterSprite_Right3
-    21300018: CharacterSprite_Up1
-    21300020: CharacterSprite_Up2
-    21300022: CharacterSprite_Up3
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: CharacterSprite_Down1
+  - first:
+      213: 21300002
+    second: CharacterSprite_Down2
+  - first:
+      213: 21300004
+    second: CharacterSprite_Down3
+  - first:
+      213: 21300006
+    second: CharacterSprite_Left1
+  - first:
+      213: 21300008
+    second: CharacterSprite_Left2
+  - first:
+      213: 21300010
+    second: CharacterSprite_Left3
+  - first:
+      213: 21300012
+    second: CharacterSprite_Right1
+  - first:
+      213: 21300014
+    second: CharacterSprite_Right2
+  - first:
+      213: 21300016
+    second: CharacterSprite_Right3
+  - first:
+      213: 21300018
+    second: CharacterSprite_Up1
+  - first:
+      213: 21300020
+    second: CharacterSprite_Up2
+  - first:
+      213: 21300022
+    second: CharacterSprite_Up3
+  externalObjects: {}
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -32,37 +57,61 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: -1
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: CharacterSprite_Down1
+    - serializedVersion: 2
+      name: CharacterSprite_Down1
       rect:
         serializedVersion: 2
         x: 0
@@ -72,17 +121,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -13.5, y: 16.5}
-        - {x: -14.5, y: 15.5}
-        - {x: -14.5, y: -10.5}
-        - {x: -12.5, y: -15.5}
-        - {x: -11.5, y: -16.5}
-        - {x: 6.5, y: -16.5}
-        - {x: 14.5, y: -13.5}
-        - {x: 14.5, y: 12.5}
-        - {x: 9.5, y: 16.5}
-    - name: CharacterSprite_Down2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSprite_Down2
       rect:
         serializedVersion: 2
         x: 32
@@ -92,15 +142,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -15.5, y: 16.5}
-        - {x: -15.5, y: -11.5}
-        - {x: -9.5, y: -16.5}
-        - {x: 7.5, y: -16.5}
-        - {x: 15.5, y: -8.5}
-        - {x: 15.5, y: 1.5}
-        - {x: 14.5, y: 16.5}
-    - name: CharacterSprite_Down3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSprite_Down3
       rect:
         serializedVersion: 2
         x: 65
@@ -110,15 +163,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -14, y: 16.5}
-        - {x: -15, y: 13.5}
-        - {x: -15, y: -13.5}
-        - {x: -8, y: -16.5}
-        - {x: 14, y: -16.5}
-        - {x: 14, y: 13.5}
-        - {x: 10, y: 16.5}
-    - name: CharacterSprite_Left1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSprite_Left1
       rect:
         serializedVersion: 2
         x: 0
@@ -128,15 +184,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -15.5, y: 16.5}
-        - {x: -15.5, y: 3.5}
-        - {x: -10.5, y: -16.5}
-        - {x: 11.5, y: -16.5}
-        - {x: 13.5, y: -14.5}
-        - {x: 13.5, y: 8.5}
-        - {x: 10.5, y: 16.5}
-    - name: CharacterSprite_Left2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSprite_Left2
       rect:
         serializedVersion: 2
         x: 32
@@ -146,18 +205,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 13.5, y: 3.5}
-        - {x: 11.5, y: 13.5}
-        - {x: 8.5, y: 16.5}
-        - {x: -15.5, y: 16.5}
-        - {x: -15.5, y: 4.5}
-        - {x: -11.5, y: -9.5}
-        - {x: -5.5, y: -16.5}
-        - {x: 4.5, y: -16.5}
-        - {x: 12.5, y: -9.5}
-        - {x: 13.5, y: -8.5}
-    - name: CharacterSprite_Left3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSprite_Left3
       rect:
         serializedVersion: 2
         x: 63
@@ -167,15 +226,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -14, y: 16.5}
-        - {x: -14, y: 5.5}
-        - {x: -8, y: -16.5}
-        - {x: 12, y: -16.5}
-        - {x: 14, y: -11.5}
-        - {x: 14, y: 14.5}
-        - {x: 12, y: 16.5}
-    - name: CharacterSprite_Right1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSprite_Right1
       rect:
         serializedVersion: 2
         x: 0
@@ -185,16 +247,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -11.5, y: 16.5}
-        - {x: -13.5, y: 12.5}
-        - {x: -14.5, y: 8.5}
-        - {x: -14.5, y: -7.5}
-        - {x: -10.5, y: -16.5}
-        - {x: 6.5, y: -16.5}
-        - {x: 12.5, y: -0.5}
-        - {x: 12.5, y: 16.5}
-    - name: CharacterSprite_Right2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSprite_Right2
       rect:
         serializedVersion: 2
         x: 32
@@ -204,15 +268,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -14.5, y: -11.5}
-        - {x: -11.5, y: -16.5}
-        - {x: 11.5, y: -16.5}
-        - {x: 12.5, y: -15.5}
-        - {x: 12.5, y: 16.5}
-        - {x: -12.5, y: 16.5}
-        - {x: -14.5, y: 12.5}
-    - name: CharacterSprite_Right3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSprite_Right3
       rect:
         serializedVersion: 2
         x: 64
@@ -222,15 +289,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -9.5, y: 16.5}
-        - {x: -13.5, y: 13.5}
-        - {x: -13.5, y: -11.5}
-        - {x: -11.5, y: -16.5}
-        - {x: 8.5, y: -16.5}
-        - {x: 12.5, y: -8.5}
-        - {x: 12.5, y: 16.5}
-    - name: CharacterSprite_Up1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSprite_Up1
       rect:
         serializedVersion: 2
         x: 0
@@ -240,15 +310,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -12.5, y: 16.5}
-        - {x: -12.5, y: -13.5}
-        - {x: -7.5, y: -16.5}
-        - {x: 12.5, y: -16.5}
-        - {x: 14.5, y: -6.5}
-        - {x: 14.5, y: 14.5}
-        - {x: 12.5, y: 16.5}
-    - name: CharacterSprite_Up2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSprite_Up2
       rect:
         serializedVersion: 2
         x: 32
@@ -258,14 +331,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -13.5, y: 16.5}
-        - {x: -13.5, y: -9.5}
-        - {x: -7.5, y: -16.5}
-        - {x: 12.5, y: -16.5}
-        - {x: 14.5, y: -10.5}
-        - {x: 14.5, y: 16.5}
-    - name: CharacterSprite_Up3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSprite_Up3
       rect:
         serializedVersion: 2
         x: 64
@@ -275,16 +352,29 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -10.5, y: 16.5}
-        - {x: -12.5, y: 13.5}
-        - {x: -12.5, y: -14.5}
-        - {x: -6.5, y: -16.5}
-        - {x: 12.5, y: -16.5}
-        - {x: 14.5, y: -15.5}
-        - {x: 14.5, y: 16.5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
