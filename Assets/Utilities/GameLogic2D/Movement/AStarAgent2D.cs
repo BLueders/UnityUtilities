@@ -9,17 +9,20 @@ public class AStarAgent2D : MovementAgent2D {
     LinkedList<GridNode2D> path = new LinkedList<GridNode2D>();
     Rigidbody2D myRigidbody;
     public GameObject DebugTarget;
+    bool onRoute = false;
 
     // if target is unreachable, this returns false
     public override bool SetTarget(Vector3 target) {
-        if (this.target != target) {
-            this.target = target;
-            // Do not use A star if super close
-            if (Vector2.Distance(target, transform.position) < AStarGrid2D.CellSize * 2) {
-                path.Clear();
-                return true;
-            }
-            return recalculatePath();
+        if (Vector3.SqrMagnitude(target - this.target) > 0.001f &&
+            Vector3.SqrMagnitude(this.transform.position - target) > 0.001f) {
+                this.target = target;
+                onRoute = true;
+                // Do not use A star if super close
+                if (Vector2.Distance(target, transform.position) < AStarGrid2D.CellSize * 2) {
+                    path.Clear();
+                    return true;
+                }
+                return recalculatePath();
         }
         return true;
     }
@@ -50,7 +53,7 @@ public class AStarAgent2D : MovementAgent2D {
     
         Vector2 velocity = myRigidbody.velocity;
         
-        if (canMove && target != Vector3.zero) {
+        if (canMove && onRoute) {
             if (path.Count != 0) {
                 velocity = MoveByPath(velocity);
             } else {
@@ -97,7 +100,7 @@ public class AStarAgent2D : MovementAgent2D {
         if (sqrDist < targetEpsilon) {
             Speed = 0;
             transform.position = target;
-            target = Vector3.zero;
+            onRoute = false;
         }
         velocity = (currentTarget - currentPosition).normalized * Speed;
         return velocity;

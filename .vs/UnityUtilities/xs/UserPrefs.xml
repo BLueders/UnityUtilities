@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{2302A1C8-DF09-58DF-6678-E034B82E7883}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Utilities/GameLogic2D/Movement/AStarAgent2D.cs">
+    <Files>
+      <File FileName="Assets/Utilities/GameLogic2D/Movement/AStarAgent2D.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="047669ea-84d3-4978-99c6-51108617acc1" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

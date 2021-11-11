@@ -5,7 +5,7 @@ using NiHierarchyInfo;
 namespace NiHierarchyInfoComponents {
 	public class HasCollider : HierarchyIndicatorBase {
 		static string OnIndicatorCheck(GameObject gameObject) {
-			if (gameObject.GetComponent<Collider>() != null)
+			if (gameObject.GetComponent<Collider>() != null || gameObject.GetComponent<Collider2D>() != null)
 				return "C";
 			return null;
 		}
